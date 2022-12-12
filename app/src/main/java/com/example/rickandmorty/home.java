@@ -46,7 +46,7 @@ public class home extends AppCompatActivity {
     }
 
     public void btnuser(View view) {
-        Intent intent = new Intent(this,user.class);
+        Intent intent = new Intent(this,usuario.class);
         startActivity(intent);
         finish();
     }
@@ -119,10 +119,10 @@ public class home extends AppCompatActivity {
     private void MostrarNomeUsuario() throws IOException, ClassNotFoundException {
         TextView nometxt = findViewById(R.id.txt_nmusuario);
 
-        File file = getFileStreamPath(user.FILENAME);
+        File file = getFileStreamPath(usuario.FILENAME);
         FileInputStream fis = new FileInputStream(file);
         ObjectInputStream ois = new ObjectInputStream(fis);
-        user.User retorno = (user.User) ois.readObject();
+        usuario.User retorno = (usuario.User) ois.readObject();
         String nome = retorno.GetName();
 
         nometxt.setText("Olá " + nome + "!");
@@ -139,4 +139,106 @@ public class home extends AppCompatActivity {
             background.setBackgroundColor(Color.parseColor("#3F51B5"));
         }
     }
+
+    /*
+    public static String FILENAME = "USERINFOS";
+    File file = getFileStreamPath(FILENAME);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user);
+
+        try {
+            MostrarNomeUsuario("");
+        } catch (FileNotFoundException e) {
+            // e.printStackTrace();
+        } catch (IOException e) {
+            // e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // e.printStackTrace();
+        }
+    }
+
+    public void btnmenu(View view) {
+        Intent intent = new Intent(this,menu.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public class User implements Serializable {
+        private String username;
+        private String email;
+
+        public User(String username, String email) {
+            this.username = username;
+            this.email = email;
+        }
+
+        public void update(String nome, String email){
+            this.username = nome;
+            this.email = email;
+        }
+
+        public String GetName(){
+            return this.username;
+        }
+    }
+
+        private void MostrarNomeUsuario(String atualizado) throws IOException, ClassNotFoundException {
+        TextView nometxt = findViewById(R.id.txt_nmusuario);
+        TextView username = findViewById(R.id.edttxt_nome);
+        TextView useremail = findViewById(R.id.edttxt_email);
+
+        FileInputStream fis = new FileInputStream(file);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        User retorno = (User) ois.readObject();
+
+        nometxt.setText("Olá " + retorno.username + "!" + atualizado);
+        username.setText(retorno.username);
+        useremail.setText(retorno.email);
+    }
+
+    public void salvaralts(View view) throws IOException, ClassNotFoundException {
+        TextView username = findViewById(R.id.txt_username);
+        TextView useremail = findViewById(R.id.txt_useremail);
+
+        FileOutputStream fos = new FileOutputStream(file);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        if(username.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Preencha o seu nome", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            String nome = username.getText().toString();
+
+            if(useremail.getText().toString().equals("")) {
+                Toast.makeText(getApplicationContext(), "Preencha o seu email", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                String email = useremail.getText().toString();
+
+                FileInputStream fis = new FileInputStream(file);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                User retorno = (User) ois.readObject();
+
+                if (retorno == null){
+                    User usuario = new User(nome, email);
+                    oos.writeObject(usuario);
+                }
+                else{
+                    retorno.update(nome, email);
+                    oos.writeObject(retorno);
+                }
+
+                ois.close();
+                fis.close();
+                oos.close();
+                fos.close();
+            }
+        }
+
+        MostrarNomeUsuario(" - Atualizado");
+    }
+     */
 }
