@@ -1,0 +1,40 @@
+<resources>
+    //Nome App
+    <string name="app_name">rickandmorty</string>
+    //Tela de Splash
+    <string name="button1">AGITE O CELULAR PARA ENTRAR</string>
+    //Tela Home
+    <string name="textper">PERSONAGENS:</string>
+    <string name="texttemp">TEMPORADAS:</string>
+    <string name="textnovidade">NOVIDADES:</string>
+    <string name="textquiz">Será que você realmente é fã da série "Rick and Morty"?! Teste agora seus conhecimentos, aperte no botão abaixo e faça agora o teste.</string>
+    <string name="btnquiz">INICIAR QUIZ</string>
+    //Tela do Menu
+    <string name="btnhomemenu">HOME</string>
+    <string name="btnpershome">PERSONAGENS</string>
+    <string name="btntempmenu">TEMPORADAS</string>
+    <string name="btnquizmenu">QUIZ</string>
+    <string name="btnlojamenu">LOJA VIRTUAL</string>
+    <string name="btntematxt">TEMA</string>
+    <string name="btnsairmenu">SAIR</string>
+    //Text presentes em todas as páginas referente aos personagens
+    <string name="idadepers">IDADE:</string>
+    <string name="apelidopers">APELIDO:</string>
+    <string name="sexopers">SEXO:</string>
+    <string name="sobrepers">SOBRE:</string>
+    //Tela do Personagem "Rick Sanchez"
+    <string name="nomerick">RICK SANCHEZ</string>
+    <string name="apelidorick">Pickle Rick, Rickzinho</string>
+    <string name="idaderick">73 anos</string>
+    <string name="sexorick">Masculino</string>
+    <string name="sobrerick">Rick é um cientista totalmente louco, após desaparecer por 20 anos, retorna para a sua família e começa a sair em diversas aventuras com seu neto, Morty.</string>
+    <string name="title_activity_user">user</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:context=".home">
+
+    <Button
+        android:id="@+id/btnhome"
+        android:layout_width="94dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#00FFFFFF"
+        android:onClick="btnmenu"
+        app:icon="@android:drawable/ic_menu_sort_by_size"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btn_user"
+        android:layout_width="67dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="4dp"
+        android:background="#00FFFFFF"
+        android:onClick="btnuser"
+        android:textAlignment="center"
+        app:icon="@drawable/user_icon"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/txt_nmusuario"
+        android:layout_width="93dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Olá *Nome* !"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgtopo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgtopo"
+        android:layout_width="159dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@+id/btnhome"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logobranca2" />
+
+    <ScrollView
+        android:id="@+id/scrl_container"
+        android:layout_width="410dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_inicial"
+                android:layout_width="415dp"
+                android:layout_height="247dp"
+                app:srcCompat="@drawable/home" />
+
+            <TextView
+                android:id="@+id/txt_personagens"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingLeft="25dp"
+                android:text="@string/textper"
+                android:textAlignment="textStart"
+                android:textSize="16sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/scrl_personagens"
+                android:layout_width="match_parent"
+                android:layout_height="204dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/pers1"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#00FFFFFF"
+                        android:onClick="btnpers1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/pers1"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/pers2"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#00FFFFFF"
+                        android:onClick="btnpers2"
+                        app:layout_constraintStart_toEndOf="@id/pers1"
+                        app:layout_constraintTop_toTopOf="@id/pers1"
+                        app:srcCompat="@drawable/pers2"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/pers3"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintStart_toEndOf="@id/pers2"
+                        app:layout_constraintTop_toTopOf="@id/pers2"
+                        app:srcCompat="@drawable/pers3"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/pers4"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintStart_toEndOf="@id/pers3"
+                        app:layout_constraintTop_toTopOf="@id/pers3"
+                        app:srcCompat="@drawable/pers4"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/pers5"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="65dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/pers4"
+                        app:layout_constraintTop_toTopOf="@id/pers4"
+                        app:srcCompat="@drawable/pers5" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/txt_temps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingLeft="25dp"
+                android:text="@string/texttemp"
+                android:textSize="16sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/srcl_temps"
+                android:layout_width="match_parent"
+                android:layout_height="204dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/temp1"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="16dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/temp1"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/temp2"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintStart_toEndOf="@id/temp1"
+                        app:layout_constraintTop_toTopOf="@id/temp1"
+                        app:srcCompat="@drawable/temp2"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/temp3"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="8dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintStart_toEndOf="@id/temp2"
+                        app:layout_constraintTop_toTopOf="@id/temp2"
+                        app:srcCompat="@drawable/temp3"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:id="@+id/temp4"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintStart_toEndOf="@id/temp3"
+                        app:layout_constraintTop_toTopOf="@id/temp3"
+                        app:srcCompat="@drawable/temp4" />
+
+                    <ImageButton
+                        android:id="@+id/temp5"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintStart_toEndOf="@id/temp4"
+                        app:layout_constraintTop_toTopOf="@id/temp4"
+                        app:srcCompat="@drawable/temp5" />
+
+                    <ImageButton
+                        android:id="@+id/temp6"
+                        android:layout_width="131dp"
+                        android:layout_height="170dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="65dp"
+                        android:background="#00FFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/temp5"
+                        app:layout_constraintTop_toTopOf="@id/temp5"
+                        app:srcCompat="@drawable/temp6" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/txt_novidades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingLeft="25dp"
+                android:text="@string/textnovidade"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_quiz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingLeft="25dp"
+                android:paddingRight="60dp"
+                android:text="@string/textquiz"
+                android:textColor="#8CFFFFFF"
+                android:textSize="14sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="245dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="340dp"
+                        android:layout_height="210dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/quiz" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <Button
+                android:id="@+id/btn_quiz"
+                android:layout_width="330dp"
+                android:layout_height="58dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="40dp"
+                android:backgroundTint="@color/verde"
+                android:fontFamily="sans-serif-black"
+                android:onClick="btnquiz"
+                android:text="@string/btnquiz"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
