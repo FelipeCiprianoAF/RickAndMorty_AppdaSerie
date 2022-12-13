@@ -2,10 +2,13 @@
 package com.example.rickandmorty;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,10 +17,15 @@ import android.widget.Toast;
 
 public class menu extends AppCompatActivity {
 
+    ConstraintLayout background;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        background = findViewById(R.id.background);
+        MudarCorTema(getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0).getString("tema", "dark"));
     }
 
     public void temaLight(View view)
@@ -44,6 +52,18 @@ public class menu extends AppCompatActivity {
         }
 
         editor.commit();
+
+        MudarCorTema(tema);
+    }
+
+    public void MudarCorTema(String tema){
+
+        if(tema == "dark"){
+            background.setBackgroundResource(R.drawable.fundooo);
+
+        } else if(tema == "light"){
+            background.setBackgroundResource(R.drawable.fundo_light_0);
+        }
     }
 
     public void btnhomemenu(View view) {
