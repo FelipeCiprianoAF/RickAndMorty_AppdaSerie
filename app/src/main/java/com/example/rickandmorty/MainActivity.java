@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private double accelerationCurrentValue;
     private double accelerationPreviousValue;
 
+    public static final String ARQUIVO_PREFERENCIA = "";
+
     TextView txtnome;
     ImageView imgsplash;
-
-    public static final String ARQUIVO_PREFERENCIA = "";
 
     float rotacao = 5;
     float passartela = 35;
@@ -63,22 +63,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtnome = findViewById(R.id.edittxt_nome);
+        // txtnome = findViewById(R.id.edittxt_nome);
         imgsplash = findViewById(R.id.imgsplash);
 
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
 
-        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
+        SharedPreferences preferences = getSharedPreferences(ARQUIVO_PREFERENCIA, 0);
         String nome = preferences.getString("nome", "Usuário não definido!");
 
+        /*
         if (nome != "Usuário não definido!"){
             txtnome.setText(nome);
         }
         else{
             txtnome.setText("Nome");
         }
+         */
     }
 
     @Override
@@ -95,8 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void abreHome(){
         Intent intent = new Intent(this,home.class);
+        startActivity(intent);
 
-        SharedPreferences preferences = getSharedPreferences(ARQUIVO_PREFERENCIA, 0);
+        /*
+        SharedPreferences preferences = getSharedPreferences(menu.ARQUIVO_PREFERENCIA, 0);
         SharedPreferences.Editor editor = preferences.edit();
 
 
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+         */
         }
 
     public void btnabrehome(View view) {

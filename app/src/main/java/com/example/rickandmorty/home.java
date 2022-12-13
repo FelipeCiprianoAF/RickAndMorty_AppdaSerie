@@ -36,11 +36,11 @@ public class home extends AppCompatActivity {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        MudarTema(preferences.getString("theme", "Sem Tema"));
+        MudarTema(preferences.getString("theme", "dark"));
     }
 
     public void btnmenu(View view) {
-        Intent intent = new Intent(this,menu.class);
+        Intent intent = new Intent(getApplicationContext(),menu.class);
         startActivity(intent);
         finish();
     }
@@ -130,12 +130,12 @@ public class home extends AppCompatActivity {
 
     public void MudarTema(String tema){
 
-        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
-        SharedPreferences.Editor editor = preferences.edit();
+        // SharedPreferences preferences = getSharedPreferences(menu.ARQUIVO_PREFERENCIA, 0);
+        // SharedPreferences.Editor editor = preferences.edit();
 
-        if(tema == "dark" || tema == "indefinido"){
+        if(tema == "dark"){
             background.setBackgroundColor(Color.parseColor("#000000"));
-        } else if (tema == "light"){
+        } else if(tema == "light"){
             background.setBackgroundColor(Color.parseColor("#3F51B5"));
         }
     }

@@ -24,9 +24,9 @@
         android:layout_width="300dp"
         android:layout_height="65dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="79dp"
         android:layout_marginEnd="55dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="79dp"
         android:backgroundTint="@color/verde"
         android:fontFamily="sans-serif-black"
         android:onClick="btnabrehome"
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittxt_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/imgsplash" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -52,20 +52,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logobranca2" />
-
-    <EditText
-        android:id="@+id/edittxt_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="100dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Nome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgsplash" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
