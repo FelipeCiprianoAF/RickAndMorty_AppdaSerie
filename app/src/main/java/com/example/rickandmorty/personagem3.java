@@ -1,12 +1,12 @@
 package com.example.rickandmorty;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class personagem3 extends AppCompatActivity {
+public class personagem3  extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

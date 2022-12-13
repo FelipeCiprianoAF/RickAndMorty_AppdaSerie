@@ -50,7 +50,7 @@
                         android:layout_marginTop="110dp"
                         android:layout_marginEnd="75dp"
                         android:fontFamily="sans-serif-condensed-medium"
-                        android:text="Beth Smith"
+                        android:text="Beth  Smith"
                         android:textColor="@color/verde"
                         android:textSize="34sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="150dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/idaderick"
+                        android:text="35"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp"
@@ -130,7 +130,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="145dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/sexorick"
+                        android:text="Feminino"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp"
@@ -156,13 +156,13 @@
 
                     <TextView
                         android:id="@+id/textView9"
-                        android:layout_width="163dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="22dp"
                         android:layout_marginStart="98dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="97dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/apelidorick"
+                        android:text="Beth, inteligente e psicopata"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp"
@@ -172,13 +172,13 @@
 
                     <TextView
                         android:id="@+id/textView13"
-                        android:layout_width="333dp"
+                        android:layout_width="320dp"
                         android:layout_height="82dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/sobrerick"
+                        android:text="Mãe da família, muito inteligente  e esperta, Beth tem um lado meio psicopata que herdou de seu pai junto à inteligência."
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp"
@@ -228,7 +228,7 @@
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/persona1" />
+        app:srcCompat="@drawable/persona2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

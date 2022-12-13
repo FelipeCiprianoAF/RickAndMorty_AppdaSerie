@@ -1,3 +1,4 @@
+
 package com.example.rickandmorty;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -82,8 +83,10 @@ public class home extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Intents sobre as Temporadas:
     /*
+
+    // Intents sobre as Temporadas:
+
     public void btntemp1(View view) {
         Intent intent = new Intent(this,temp1.class);
         startActivity(intent);

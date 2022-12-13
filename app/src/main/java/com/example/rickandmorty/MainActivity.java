@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
             if (changeInAcceleration > passartela){
                 abreHome();
             }
+
+            MudarTema(getSharedPreferences(ARQUIVO_PREFERENCIA, 0).getString("theme", "dark"));
         }
 
         @Override
@@ -85,6 +88,22 @@ public class MainActivity extends AppCompatActivity {
             txtnome.setText("Nome");
         }
          */
+    }
+
+    public void MudarTema(String tema){
+
+        // SharedPreferences preferences = getSharedPreferences(menu.ARQUIVO_PREFERENCIA, 0);
+        // SharedPreferences.Editor editor = preferences.edit();
+
+        ConstraintLayout background = findViewById(R.id.splash_background);
+
+        if(tema == "dark"){
+            background.setBackgroundResource(R.drawable.fundooo);
+            Toast.makeText(getApplicationContext(), "Tema salvo como DARK", Toast.LENGTH_SHORT).show();
+        } else if(tema == "light"){
+            background.setBackgroundResource(R.drawable.fundo_light_0);
+            Toast.makeText(getApplicationContext(), "Tema salvo como LIGHT", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

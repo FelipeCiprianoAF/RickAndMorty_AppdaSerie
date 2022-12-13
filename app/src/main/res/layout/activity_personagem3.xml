@@ -97,7 +97,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="150dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/idaderick"
+                        android:text="17"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp"
@@ -130,7 +130,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="145dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/sexorick"
+                        android:text="Feminino"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp"
@@ -156,13 +156,13 @@
 
                     <TextView
                         android:id="@+id/textView9"
-                        android:layout_width="163dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="22dp"
                         android:layout_marginStart="98dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="97dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/apelidorick"
+                        android:text="Summer, irmã desgraçada"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp"
@@ -172,13 +172,13 @@
 
                     <TextView
                         android:id="@+id/textView13"
-                        android:layout_width="333dp"
-                        android:layout_height="82dp"
+                        android:layout_width="320dp"
+                        android:layout_height="135dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="4dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/sobrerick"
+                        android:text="Filha mais velha na família, Summer é a típica adolescente americana, com excessão que usa das tecnoloogias super avançadas de seu avô para suas vontades de adolescente."
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16dp"
@@ -228,7 +228,7 @@
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/persona1" />
+        app:srcCompat="@drawable/persona2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

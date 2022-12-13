@@ -1,9 +1,14 @@
 package com.example.rickandmorty;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,24 +24,31 @@ import java.io.Serializable;
 
 public class usuario extends AppCompatActivity {
 
-    public static String FILENAME = "USERINFO";
-    File file;
-    FileOutputStream fos;
+    boolean mExternalStorageAvailable = false;
+    boolean mExternalStorageWriteable = false;
+    String state = Environment.getExternalStorageState();
+
+
+    ConstraintLayout background;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario);
 
-        file = getFileStreamPath(FILENAME);
-
-        /*
-        try {
-            fos = new FileOutputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            // Podemos ler e escrever os meios de comunicaçãom
+            mExternalStorageAvailable = mExternalStorageWriteable = true;
+        } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            // Só podemos ler a mídiam
+            mExternalStorageAvailable = true;
+            mExternalStorageWriteable = false;
+        } else {
+            mExternalStorageAvailable = mExternalStorageWriteable = false;
         }
-         */
+
+        background = findViewById(R.id.background);
 
         try {
             MostrarNomeUsuario("");
@@ -47,11 +59,14 @@ public class usuario extends AppCompatActivity {
         } catch (ClassNotFoundException e) {
             // e.printStackTrace();
         }
+
+        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
+        // MudarTema(preferences.getString("theme", "dark"));
     }
 
     public void btnhome(View view) throws IOException {
         // fos.close();
-        Intent intent = new Intent(this,home.class);
+        Intent intent = new Intent(this, home.class);
         startActivity(intent);
         finish();
     }
@@ -65,35 +80,29 @@ public class usuario extends AppCompatActivity {
             this.email = email;
         }
 
-        public void update(String nome, String email){
+        public void update(String nome, String email) {
             this.username = nome;
             this.email = email;
         }
 
-        public String GetName(){
+        public String GetName() {
             return this.username;
         }
     }
 
-    private void MostrarNomeUsuario(String atualizado) throws IOException, ClassNotFoundException {
+    private void MostrarNomeUsuario(String atualizado) throws IOException, ClassNotFoundException
+    {
         TextView nometxt = findViewById(R.id.txt_nmusuario);
         TextView username = findViewById(R.id.edttxt_nome);
         TextView useremail = findViewById(R.id.edttxt_email);
-
-        FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        User retorno = (User) ois.readObject();
-
-        nometxt.setText("Olá " + retorno.username + "!" + atualizado);
-        username.setText(retorno.username);
-        useremail.setText(retorno.email);
     }
-
-    public void salvaralts(View view)
-    {
+    /*
+    public void salvaralts(View view) throws IOException {
         TextView username = findViewById(R.id.txt_username);
         TextView useremail = findViewById(R.id.txt_useremail);
 
+ */
+        /*
         try {
             fos = new FileOutputStream(file);
             Toast.makeText(getApplicationContext(), "Atribuido pathway do 'file', para 'fos' com sucesso!", Toast.LENGTH_LONG).show();
@@ -102,6 +111,7 @@ public class usuario extends AppCompatActivity {
             e.printStackTrace();
         }
         ObjectOutputStream oos = null;
+
         try {
             oos = new ObjectOutputStream(fos);
             Toast.makeText(getApplicationContext(), "Atribuido ObjectOutputStream 'oos' com sucesso!", Toast.LENGTH_LONG).show();
@@ -122,6 +132,8 @@ public class usuario extends AppCompatActivity {
             } else {
                 String email = useremail.getText().toString();
                 User usuario = new User(nome,email);
+                oos.writeObject(usuario);
+                /*
                 try {
                     oos.writeObject(usuario);
                     Toast.makeText(getApplicationContext(), "Usuario Salvo!!!", Toast.LENGTH_SHORT).show();
@@ -130,6 +142,8 @@ public class usuario extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Não foi possível salvar o usuário", Toast.LENGTH_SHORT).show();
                 }
 
+                 */
+                    /*
                 FileInputStream fis = null;
                 try {
                     fis = new FileInputStream(file);
@@ -139,6 +153,8 @@ public class usuario extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                     */
+/*
                 ObjectInputStream ois = null;
                 try {
                     ois = new ObjectInputStream(fis);
@@ -148,6 +164,8 @@ public class usuario extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Não foi possível atribuir 'ois' (ObjectInputStremam) de usuário", Toast.LENGTH_SHORT).show();
                 }
 
+ */
+/*
                 User retorno = null;
                 try {
                     retorno = (User) ois.readObject();
@@ -159,6 +177,8 @@ public class usuario extends AppCompatActivity {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "Não foi possível atribuir 'ois' (ObjectInputStremam) de usuário  :: ERRO: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
+
+ */
                 /*
                 if (retorno == null){
                     User usuario = new User(nome, email);
@@ -169,6 +189,7 @@ public class usuario extends AppCompatActivity {
                     oos.writeObject(retorno);
                 }
                 */
+        /*
                 try {
                     oos.close();
                 } catch (IOException e) {
@@ -179,17 +200,31 @@ public class usuario extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-        }
+
+         */
 
 
-             // ois.close();
-           // fis.close();
-         // oos.close();
+    // ois.close();
+    // fis.close();
+    // oos.close();
         /*
         startActivity(new Intent(this,home.class));
         finish();
          */
+/*
+    public void MudarTema(String tema){
+
+        // SharedPreferences preferences = getSharedPreferences(menu.ARQUIVO_PREFERENCIA, 0);
+        // SharedPreferences.Editor editor = preferences.edit();
+
+        if(tema == "dark"){
+            background.setBackgroundColor(Color.parseColor("#000000"));
+        } else if(tema == "light"){
+            background.setBackgroundColor(Color.parseColor("#3F51B5"));
+        }
     }
 }
-        // MostrarNomeUsuario(" - Atualizado");
+ */
+    // MostrarNomeUsuario(" - Atualizado");
+
+}
