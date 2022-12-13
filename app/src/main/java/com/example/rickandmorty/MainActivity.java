@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences(ARQUIVO_PREFERENCIA, 0);
         String nome = preferences.getString("nome", "Usuário não definido!");
 
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("theme", "dark");
+        editor.commit();
+
         /*
         if (nome != "Usuário não definido!"){
             txtnome.setText(nome);

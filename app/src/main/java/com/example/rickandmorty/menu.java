@@ -25,7 +25,9 @@ public class menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         background = findViewById(R.id.background);
-        MudarCorTema(getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0).getString("tema", "dark"));
+        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
+
+        MudarCorTema(preferences.getString("theme", "dark"));
     }
 
     public void temaLight(View view)
@@ -60,9 +62,11 @@ public class menu extends AppCompatActivity {
 
         if(tema == "dark"){
             background.setBackgroundResource(R.drawable.fundooo);
+            Toast.makeText(getApplicationContext(), "Tema salvo como DARK", Toast.LENGTH_SHORT).show();
 
         } else if(tema == "light"){
             background.setBackgroundResource(R.drawable.fundo_light_0);
+            Toast.makeText(getApplicationContext(), "Tema salvo como LIGHT", Toast.LENGTH_SHORT).show();
         }
     }
 
