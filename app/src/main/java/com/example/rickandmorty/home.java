@@ -32,7 +32,6 @@ public class home extends AppCompatActivity {
         background = findViewById(R.id.background);
         SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
 
-        /*
         try {
             MostrarNomeUsuario();
         } catch (IOException e) {
@@ -40,7 +39,7 @@ public class home extends AppCompatActivity {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-         */
+
         MudarTema(preferences.getString("theme", "dark"));
     }
 
@@ -123,23 +122,36 @@ public class home extends AppCompatActivity {
 
     */
 
-    /*
     private void MostrarNomeUsuario() throws IOException, ClassNotFoundException {
         TextView nometxt = findViewById(R.id.txt_nmusuario);
 
-        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File arquivo = new File(dir, "teste.obj");
-        FileOutputStream fos = FileOutputStream(arquivo);
+        File dir = (Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOCUMENTS + "/" + usuario.FOLDER_NAME));
+        File arquivo = null;
+        if (dir != null) {
+            arquivo = dir;
+        }
+        else{
+            arquivo = new File(Environment.DIRECTORY_DOCUMENTS, usuario.FOLDER_NAME);
+        }
 
-        FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        usuario.User retorno = (usuario.User) ois.readObject();
-        String nome = retorno.GetName();
+        FileInputStream fis = new FileInputStream(arquivo);
+        ObjectInputStream ois = null;
+        if (fis != null) {
+            ois = new ObjectInputStream(fis);
+        }
+        if (ois != null) {
+            user usuariocadastrado = (user) ois.readObject();
+            String nome = usuariocadastrado.GetName();
 
-        nometxt.setText("Olá " + nome + "!");
+            if (nome != null && nome != "") {
+                nometxt.setText("Olá, " + nome + "!");
+            }
+            else { nometxt.setText(("Olá, usuário!")); }
+        }
+        fis.close();
+        ois.close();
     }
-
-     */
 
     public void MudarTema(String tema){
 

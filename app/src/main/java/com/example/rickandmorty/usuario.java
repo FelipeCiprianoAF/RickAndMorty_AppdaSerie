@@ -7,6 +7,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
@@ -48,7 +49,8 @@ public class usuario extends AppCompatActivity {
     public static String FOLDER_NAME = "user.obj";
     private Button salvabtn;
 
-    // File arquivo;
+    private File dir;
+    public static File arquivo;
 
     ConstraintLayout background;
 
@@ -57,24 +59,19 @@ public class usuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario);
 
-        // arquivo = (Environment.getExternalStoragePublicDirectory(
-         //          Environment.DIRECTORY_DOCUMENTS + "/" + FOLDER_NAME));
-
         background = findViewById(R.id.background);
         salvabtn = findViewById(R.id.btnsalvar);
 
         try {
+            ChecharArquivoUser();
             MostrarNomeUsuario();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Toast.makeText(getApplicationContext(), "PERMISSIONS: " + checkPermission(), Toast.LENGTH_LONG).show();
-
         salvabtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (checkPermission() == true) {
-                    Toast.makeText(getApplicationContext(), "onClick: Permissions already granted", Toast.LENGTH_LONG).show();
                     createFolder();
                 } else {
                     Log.d(TAG, "onClick: Permission were not granted - Requesting");
@@ -162,21 +159,35 @@ public class usuario extends AppCompatActivity {
         }
     }
 
-    private void createFolder() {
-        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-        File arquivo = new File(dir, FOLDER_NAME);
+    private void createFolder()
+    {
+        ChecharArquivoUser();
+        ConfirmarAlteracoes();
+        try {
+            MostrarNomeUsuario();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private void ConfirmarAlteracoes() {
         if (arquivo != null) {
-            Toast.makeText(getApplicationContext(), "Diretório:" + dir.getAbsolutePath() + ";" +
-                                                    " Arquivo: " + arquivo.getAbsolutePath(), Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), "Diretório:" + dir.getAbsolutePath() + ";" +
+            // " Arquivo: " + arquivo.getAbsolutePath(), Toast.LENGTH_LONG).show();
             SalvarAlteracoes(arquivo);
-            try {
-                MostrarNomeUsuario();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }else {
             Toast.makeText(getApplicationContext(), "'Folder' não criada", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void ChecharArquivoUser() {
+        dir = (Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOCUMENTS + "/" + FOLDER_NAME));
+        if (dir != null) {
+            arquivo = dir;
+        }
+        else{
+            arquivo = new File(Environment.DIRECTORY_DOCUMENTS, FOLDER_NAME);
         }
     }
 
@@ -215,23 +226,18 @@ public class usuario extends AppCompatActivity {
             String username = vw_username.getText().toString();
             String useremail = vw_useremail.getText().toString();
 
-            User usuario = new User(username, useremail);
-            Toast.makeText(getApplicationContext(), "Nome: " + usuario.GetName() + " - Email: " + usuario.email, Toast.LENGTH_LONG).show();
-
+            user usuario = new user(username, useremail);
             if (oos != null){
                 try {
                     oos.writeObject(usuario);
-                    Toast.makeText(getApplicationContext(), "Objeto usuário salvo em arquivos", Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Não deu para salvar o objeto usuário em arquivos", Toast.LENGTH_LONG).show();
                 }
                 try {
                     oos.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), "oos Não é nulo!", Toast.LENGTH_LONG).show();
             }
             try {
                 fos.close();
@@ -249,38 +255,15 @@ public class usuario extends AppCompatActivity {
         finish();
     }
 
-    private class User implements Serializable {
-        private String username;
-        private String email;
-
-        public User(String username, String email) {
-            this.username = username;
-            this.email = email;
-        }
-
-        public void update(String nome, String email) {
-            this.username = nome;
-            this.email = email;
-        }
-
-        public String GetName() {
-            return this.username;
-        }
-    }
-
     private void MostrarNomeUsuario() throws IOException
     {
-        File arquivo = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOCUMENTS + "/" + FOLDER_NAME);
-
         InputStream fis = new FileInputStream(arquivo);
         ObjectInputStream ois= new ObjectInputStream(fis);
 
         try {
-            User usuariosalvo = (User) ois.readObject();
+            user usuariosalvo = (user) ois.readObject();
 
             String nomesalvo = usuariosalvo.GetName();
-            Toast.makeText(getApplicationContext(), "Nome Salvo - " + nomesalvo, Toast.LENGTH_SHORT).show();
 
             TextView txtnome = findViewById(R.id.txt_nmusuario2);
             if (nomesalvo != null || nomesalvo != "") {
@@ -289,7 +272,6 @@ public class usuario extends AppCompatActivity {
             else{
                 txtnome.setText("Olá, salve seu usuário.");
             }
-            Toast.makeText(getApplicationContext(), "NOME SALVO::::" + nomesalvo, Toast.LENGTH_SHORT).show();
         } catch (ClassNotFoundException e) {
             Toast.makeText(getApplicationContext(), "Não possível foi mostrar nome de usuário pelo edttext", Toast.LENGTH_SHORT);
             e.printStackTrace();
