@@ -7,14 +7,12 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -30,8 +28,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -40,7 +36,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 public class usuario extends AppCompatActivity {
 
@@ -80,14 +75,14 @@ public class usuario extends AppCompatActivity {
             }
         });
 
-        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
+        SharedPreferences preferences = getSharedPreferences(menu.PREFERENCIA_TEMA, 0);
         String tema = preferences.getString("theme", "dark");
         MudarTema(tema);
     }
 
 
     public void MudarTema(String tema){
-        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
+        SharedPreferences preferences = getSharedPreferences(menu.PREFERENCIA_TEMA, 0);
         SharedPreferences.Editor editor = preferences.edit();
 
         if(tema == "dark"){

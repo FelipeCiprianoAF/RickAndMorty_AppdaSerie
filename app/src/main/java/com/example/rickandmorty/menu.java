@@ -4,20 +4,18 @@ package com.example.rickandmorty;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Switch;
 import android.widget.Toast;
 
 public class menu extends AppCompatActivity {
 
     ConstraintLayout background;
+
+    public static final String PREFERENCIA_TEMA = "com.example.android.preferencia_tema";
+    private SharedPreferences preferences = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,48 +23,47 @@ public class menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         background = findViewById(R.id.background);
-        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
 
-        MudarCorTema(preferences.getString("theme", "dark"));
+        // Define conexão com o arquivo (já existente) de preferência de tema
+        preferences = getSharedPreferences(PREFERENCIA_TEMA, 0);
+        String tema = preferences.getString("theme", "dark");
+        MudarCorTema(tema);
     }
 
     public void temaLight(View view)
     {
-        MudarTema("light");
+        ConfigurarTema("light");
     }
 
     public void temaDark(View view)
     {
-        MudarTema("dark");
+        ConfigurarTema("dark");
     }
 
-    public void MudarTema(String tema){
+    public void ConfigurarTema(String tema){
+        SalvarAlteracaoDeTema(tema);
+        MudarCorTema(tema);
+    }
 
-        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
+    private void SalvarAlteracaoDeTema(String tema) {
         SharedPreferences.Editor editor = preferences.edit();
 
         if (tema == "light"){
             editor.putString("theme", "light");
-            Toast.makeText(getApplicationContext(), "Tema Light ativado!", Toast.LENGTH_SHORT).show();
-        } else {
+        } else if(tema == "dark"){
             editor.putString("theme", "dark");
-            Toast.makeText(getApplicationContext(), "Tema Dark ativado!", Toast.LENGTH_SHORT).show();
         }
 
         editor.commit();
-
-        MudarCorTema(tema);
     }
 
     public void MudarCorTema(String tema){
 
         if(tema == "dark"){
             background.setBackgroundResource(R.drawable.fundooo);
-            Toast.makeText(getApplicationContext(), "Tema salvo como DARK", Toast.LENGTH_SHORT).show();
 
         } else if(tema == "light"){
             background.setBackgroundResource(R.drawable.fundo_light_0);
-            Toast.makeText(getApplicationContext(), "Tema salvo como LIGHT", Toast.LENGTH_SHORT).show();
         }
     }
 

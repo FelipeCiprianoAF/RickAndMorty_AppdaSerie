@@ -10,19 +10,18 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
 public class home extends AppCompatActivity {
 
-    ConstraintLayout background;
+    ConstraintLayout background = null;
+    SharedPreferences preferences = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,7 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         background = findViewById(R.id.background);
-        SharedPreferences preferences = getSharedPreferences(MainActivity.ARQUIVO_PREFERENCIA, 0);
+        preferences = getSharedPreferences(menu.PREFERENCIA_TEMA, 0);
 
         try {
             MostrarNomeUsuario();
@@ -40,7 +39,15 @@ public class home extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        MudarTema(preferences.getString("theme", "dark"));
+        String tema = preferences.getString("theme", "dark");
+        MudarTema(tema);
+
+        if (tema =="light"){
+            MudarTema("light");
+        }
+        else if(tema == "dark"){
+            MudarTema("dark");
+        }
     }
 
     public void btnmenu(View view) {
@@ -86,42 +93,6 @@ public class home extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*
-
-    // Intents sobre as Temporadas:
-
-    public void btntemp1(View view) {
-        Intent intent = new Intent(this,temp1.class);
-        startActivity(intent);
-    }
-
-    public void btntemp2(View view) {
-        Intent intent = new Intent(this,temp2.class);
-        startActivity(intent);
-    }
-
-    public void btntemp3(View view) {
-        Intent intent = new Intent(this,temp3.class);
-        startActivity(intent);
-    }
-
-    public void btntemp4(View view) {
-        Intent intent = new Intent(this,temp4.class);
-        startActivity(intent);
-    }
-
-    public void btntemp5(View view) {
-        Intent intent = new Intent(this,temp5.class);
-        startActivity(intent);
-    }
-
-    public void btntemp6(View view) {
-        Intent intent = new Intent(this,temp6.class);
-        startActivity(intent);
-    }
-
-    */
-
     private void MostrarNomeUsuario() throws IOException, ClassNotFoundException {
         TextView nometxt = findViewById(R.id.txt_nmusuario);
 
@@ -160,7 +131,7 @@ public class home extends AppCompatActivity {
 
         if(tema == "dark"){
             background.setBackgroundColor(Color.parseColor("#000000"));
-        } else if(tema == "light"){
+        } else{
             background.setBackgroundColor(Color.parseColor("#3F51B5"));
         }
     }
@@ -266,4 +237,40 @@ public class home extends AppCompatActivity {
         MostrarNomeUsuario(" - Atualizado");
     }
      */
+
+        /*
+
+    // Intents sobre as Temporadas:
+
+    public void btntemp1(View view) {
+        Intent intent = new Intent(this,temp1.class);
+        startActivity(intent);
+    }
+
+    public void btntemp2(View view) {
+        Intent intent = new Intent(this,temp2.class);
+        startActivity(intent);
+    }
+
+    public void btntemp3(View view) {
+        Intent intent = new Intent(this,temp3.class);
+        startActivity(intent);
+    }
+
+    public void btntemp4(View view) {
+        Intent intent = new Intent(this,temp4.class);
+        startActivity(intent);
+    }
+
+    public void btntemp5(View view) {
+        Intent intent = new Intent(this,temp5.class);
+        startActivity(intent);
+    }
+
+    public void btntemp6(View view) {
+        Intent intent = new Intent(this,temp6.class);
+        startActivity(intent);
+    }
+
+    */
 }

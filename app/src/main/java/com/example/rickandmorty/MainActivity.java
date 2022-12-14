@@ -2,11 +2,9 @@ package com.example.rickandmorty;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -14,7 +12,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,9 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private double accelerationCurrentValue;
     private double accelerationPreviousValue;
 
-    public static final String ARQUIVO_PREFERENCIA = "";
-
-    TextView txtnome;
     ImageView imgsplash;
 
     float rotacao = 5;
@@ -32,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
+
+    SharedPreferences preferences = null;
+    ConstraintLayout background = null;
+
 
     private SensorEventListener sensorEventListener = new SensorEventListener() {
         @Override
@@ -51,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
             if (changeInAcceleration > passartela){
                 abreHome();
             }
-
-            MudarTema(getSharedPreferences(ARQUIVO_PREFERENCIA, 0).getString("theme", "dark"));
         }
 
         @Override
@@ -66,41 +62,50 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // txtnome = findViewById(R.id.edittxt_nome);
         imgsplash = findViewById(R.id.imgsplash);
+        // Pega o link do background para mudar a imagem sendo correspondente ao tema salvo
+        background = findViewById(R.id.splash_background);
 
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
+        // Pega o tema configurado para mudar o layout dop splash
+        preferences = getSharedPreferences(menu.PREFERENCIA_TEMA, 0);
 
-        SharedPreferences preferences = getSharedPreferences(ARQUIVO_PREFERENCIA, 0);
-        String nome = preferences.getString("nome", "Usuário não definido!");
 
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("theme", "dark");
-        editor.commit();
+        ChecarArquivoPreferencia();
+    }
 
-        /*
-        if (nome != "Usuário não definido!"){
-            txtnome.setText(nome);
+    private void ChecarArquivoPreferencia() {
+        // Checar se o arquivo de preferência existe e se não existir criar-lo
+        // Caso o arquivo j´pa esteja criado:
+        if (preferences != null){
+            String tema = (preferences.getString("theme", "dark")).toString();
+            // Passa o String 'tema' que recupera o valor 'theme' do arquivo preferência para mudar o tema do aplash
+            MudarTema(tema);
         }
-        else{
-            txtnome.setText("Nome");
+            // Caso não esteja: criar o arquivo:
+        else {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("theme", "dark");
+            editor.commit();
         }
-         */
     }
 
     public void MudarTema(String tema){
 
-        // SharedPreferences preferences = getSharedPreferences(menu.ARQUIVO_PREFERENCIA, 0);
-        // SharedPreferences.Editor editor = preferences.edit();
-
-        ConstraintLayout background = findViewById(R.id.splash_background);
+        Toast.makeText(getApplicationContext(), "Tema: " + tema, Toast.LENGTH_SHORT);
 
         if(tema == "dark"){
             background.setBackgroundResource(R.drawable.fundooo);
-        } else if(tema == "light"){
+            Toast.makeText(getApplicationContext(), "Dark", Toast.LENGTH_SHORT);
+        }
+        else if(tema == "light"){
             background.setBackgroundResource(R.drawable.fundo_light_0);
+            Toast.makeText(getApplicationContext(), "Light", Toast.LENGTH_SHORT);
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Tema nem é Dark nem é Light", Toast.LENGTH_SHORT);
         }
     }
 
