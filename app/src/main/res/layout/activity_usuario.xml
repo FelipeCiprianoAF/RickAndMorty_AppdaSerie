@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/txt_nmusuario2"
-        android:layout_width="93dp"
+        android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginStart="159dp"
         android:layout_marginTop="180dp"
@@ -98,13 +98,12 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnsalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="160dp"
-        android:onClick="salvaralts"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

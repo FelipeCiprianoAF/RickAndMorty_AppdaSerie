@@ -99,10 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(tema == "dark"){
             background.setBackgroundResource(R.drawable.fundooo);
-            Toast.makeText(getApplicationContext(), "Tema salvo como DARK", Toast.LENGTH_SHORT).show();
         } else if(tema == "light"){
             background.setBackgroundResource(R.drawable.fundo_light_0);
-            Toast.makeText(getApplicationContext(), "Tema salvo como LIGHT", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -140,10 +138,11 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
          */
-        }
+    }
 
     public void btnabrehome(View view) {
         abreHome();
+        finish();
     }
 
     private void efeitoRodar(float velocidade){
