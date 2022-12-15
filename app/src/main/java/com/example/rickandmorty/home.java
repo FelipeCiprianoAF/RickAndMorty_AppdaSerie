@@ -63,7 +63,8 @@ public class home extends AppCompatActivity {
     }
 
     public void btnquiz(View view){
-        Toast.makeText(getApplicationContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
+        Intent quiz = new Intent(this, quiz.class);
+        startActivity(quiz);
     }
 
     // Intents sobre os Personagens:
@@ -237,40 +238,29 @@ public class home extends AppCompatActivity {
         MostrarNomeUsuario(" - Atualizado");
     }
      */
-
-        /*
-
     // Intents sobre as Temporadas:
 
     public void btntemp1(View view) {
-        Intent intent = new Intent(this,temp1.class);
-        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
     }
 
     public void btntemp2(View view) {
-        Intent intent = new Intent(this,temp2.class);
-        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
     }
 
     public void btntemp3(View view) {
-        Intent intent = new Intent(this,temp3.class);
-        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
     }
 
     public void btntemp4(View view) {
-        Intent intent = new Intent(this,temp4.class);
-        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
     }
 
     public void btntemp5(View view) {
-        Intent intent = new Intent(this,temp5.class);
-        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
     }
 
     public void btntemp6(View view) {
-        Intent intent = new Intent(this,temp6.class);
-        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
     }
-
-    */
 }

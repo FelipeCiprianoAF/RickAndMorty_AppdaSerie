@@ -80,4 +80,7 @@ public class menu extends AppCompatActivity {
     public void btnsair(View view){
         finishAffinity();
     }
+
+    public void checarResposta(View view) {
+    }
 }

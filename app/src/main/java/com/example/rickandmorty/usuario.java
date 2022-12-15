@@ -58,25 +58,25 @@ public class usuario extends AppCompatActivity {
         salvabtn = findViewById(R.id.btnsalvar);
 
         try {
-            ChecharArquivoUser();
-            MostrarNomeUsuario();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                ChecharArquivoUser();
+        MostrarNomeUsuario();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 
         salvabtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (checkPermission() == true) {
-                    createFolder();
-                } else {
-                    Log.d(TAG, "onClick: Permission were not granted - Requesting");
-                    requestPermission();
-                }
+        public void onClick(View view) {
+            if (checkPermission() == true) {
+                createFolder();
+            } else {
+                Log.d(TAG, "onClick: Permission were not granted - Requesting");
+                requestPermission();
             }
-        });
+        }
+    });
 
-        SharedPreferences preferences = getSharedPreferences(menu.PREFERENCIA_TEMA, 0);
-        String tema = preferences.getString("theme", "dark");
+    SharedPreferences preferences = getSharedPreferences(menu.PREFERENCIA_TEMA, 0);
+    String tema = preferences.getString("theme", "dark");
         MudarTema(tema);
     }
 
@@ -253,7 +253,7 @@ public class usuario extends AppCompatActivity {
     private void MostrarNomeUsuario() throws IOException
     {
         InputStream fis = new FileInputStream(arquivo);
-        ObjectInputStream ois= new ObjectInputStream(fis);
+        ObjectInputStream ois = new ObjectInputStream(fis);
 
         try {
             user usuariosalvo = (user) ois.readObject();

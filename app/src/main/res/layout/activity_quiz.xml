@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundooo"
-    tools:context=".menu">
+    tools:context=".quiz">
 
     <Button
         android:id="@+id/btn_opb"
@@ -17,8 +17,8 @@
         android:layout_marginEnd="35dp"
         android:backgroundTint="@color/verde"
         android:fontFamily="sans-serif-black"
-        android:onClick="btnquiz"
-        android:text="@string/btnquizmenu"
+        android:onClick="checarResposta"
+        android:text="B - Evil Moty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_opa" />
@@ -28,12 +28,12 @@
         android:layout_width="340dp"
         android:layout_height="72dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="35dp"
         android:backgroundTint="@color/verde"
         android:fontFamily="sans-serif-black"
-        android:onClick="btnhomemenu"
-        android:text="@string/btnhomemenu"
+        android:onClick="checarResposta"
+        android:text="A - Rick Sanchez"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnhome_" />
@@ -44,7 +44,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
         android:background="#00FFFFFF"
-        android:onClick="btnhomemenu"
+        android:onClick="abreMenu"
         app:icon="@android:drawable/ic_menu_sort_by_size"
         app:iconSize="40dp"
         app:iconTint="@color/white"
@@ -70,38 +70,24 @@
         android:layout_marginEnd="35dp"
         android:backgroundTint="@color/verde"
         android:fontFamily="sans-serif-black"
-        android:onClick="btnsair"
-        android:text="@string/btnsairmenu"
+        android:onClick="checarResposta"
+        android:text="C - Jerry Smith (???)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_opb" />
 
-    <Button
-        android:id="@+id/button8"
+    <TextView
+        android:id="@+id/scoretxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="159dp"
-        android:backgroundTint="@color/verde"
-        android:onClick="temaDark"
-        android:text="Dark Theme"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="174dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Score: 0"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_opc" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="159dp"
-        android:backgroundTint="@color/verde"
-        android:onClick="temaLight"
-        android:text="Light Theme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintTop_toBottomOf="@+id/imgtopo4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
