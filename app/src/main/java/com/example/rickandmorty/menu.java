@@ -74,7 +74,8 @@ public class menu extends AppCompatActivity {
     }
 
     public void btnquiz(View view){
-        Toast.makeText(getApplicationContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, quiz.class));
+        finish();
     }
 
     public void btnsair(View view){

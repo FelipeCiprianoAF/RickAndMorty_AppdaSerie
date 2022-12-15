@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class quiz extends AppCompatActivity {
+public class quiz2 extends AppCompatActivity {
 
     String ARQUIVO_SCORE = "scoretable_file.txt";
     File dir;
@@ -34,7 +34,7 @@ public class quiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        setContentView(R.layout.activity_quiz2);
 
         scoreview = findViewById(R.id.scoretxt_3);
 
@@ -124,8 +124,9 @@ public class quiz extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
             if (respondido) {
-                startActivity(new Intent(this, quiz2.class));
+                startActivity(new Intent(this, quiz3.class));
                 finish();
             }
         }

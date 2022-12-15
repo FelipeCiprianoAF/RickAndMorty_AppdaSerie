@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundooo"
-    tools:context=".quiz">
+    tools:context=".quiz3">
 
     <TextView
         android:id="@+id/txt_pergunta"
@@ -17,7 +17,7 @@
         android:layout_marginEnd="83dp"
         android:layout_marginBottom="39dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Qual desses é o mais inteligente ?"
+        android:text="Mais idiota ?"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_opa"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,8 @@
         android:layout_marginEnd="35dp"
         android:backgroundTint="@color/verde"
         android:fontFamily="sans-serif-black"
-        android:text="B - Evil Moty"
+        android:onClick="checarResposta"
+        android:text="B - Jerry."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_opa" />
@@ -48,7 +49,7 @@
         android:backgroundTint="@color/verde"
         android:fontFamily="sans-serif-black"
         android:onClick="checarResposta"
-        android:text="A - Rick Sanchez"
+        android:text="A - Jerry, com certeza"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnhome_" />
@@ -85,13 +86,14 @@
         android:layout_marginEnd="35dp"
         android:backgroundTint="@color/verde"
         android:fontFamily="sans-serif-black"
-        android:text="C - Jerry Smith (???)"
+        android:onClick="checarResposta"
+        android:text="C - Sim, é o Jerry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_opb" />
 
     <TextView
-        android:id="@+id/scoretxt"
+        android:id="@+id/scoretxt_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="173dp"
