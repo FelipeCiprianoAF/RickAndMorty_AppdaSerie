@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class quiz3 extends AppCompatActivity {
 
-    String ARQUIVO_SCORE = "scoretable_file.txt";
+    public static final String ARQUIVO_SCORE = "scoretable_file.txt";
     File dir;
     File arquivo;
 
@@ -41,46 +41,44 @@ public class quiz3 extends AppCompatActivity {
         ChecharArquivoScore();
         try {
             fis = new FileInputStream(arquivo);
-            Toast.makeText(getApplicationContext(), "FIS estabelecido", Toast.LENGTH_SHORT).show();
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
+        /*
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(arquivo);
-            Toast.makeText(getApplicationContext(), "FOS estabelecido", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         try {
-            fos.write(numscore);
-            Toast.makeText(getApplicationContext(), "Numscore escrito em FOS", Toast.LENGTH_SHORT).show();
             fos.close();
         } catch (IOException e) {
-            Toast.makeText(getApplicationContext(), "Numscore não escrito em FOS", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
 
         try {
             fis = new FileInputStream(arquivo);
-            Toast.makeText(getApplicationContext(), "FIS estabelecido", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+         */
 
-        // ObTester etorno = (ObTeste) ois.readObject();ois.close();fis.close();
+        // ObTester retorno = (ObTeste) ois.readObject();ois.close();fis.close();
 
-        try {
-            numscore = (new FileInputStream(arquivo)).read();
-            fis.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (fis != null) {
             try {
+                numscore = fis.read();
                 fis.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+                try {
+                    fis.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         }
 
@@ -119,11 +117,21 @@ public class quiz3 extends AppCompatActivity {
             if (fos != null){
                 try {
                     fos.write(numscore);
-                    fos.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (respondido) {
+            startActivity(new Intent(this, home.class));
+            Toast.makeText(getApplicationContext(), "Parabens!", Toast.LENGTH_LONG).show();
+            finish();
         }
 
         scoreview.setText("Score: " + numscore.toString());
@@ -131,9 +139,9 @@ public class quiz3 extends AppCompatActivity {
 
     public void checarResposta(View view){
 
-        if (!respondido) {
-            AtualizarScore(1);
+        if (respondido == false) {
             respondido = true;
+            AtualizarScore(1);
         }
     }
 
